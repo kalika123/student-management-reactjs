@@ -3,36 +3,26 @@ import './App.scss';
 import Header from './components/header/Header';
 import Sidebar from './components/sidebar/Sidebar';
 import Institutions from './components/pages/Institutions';
+import Login from './components/pages/login/Login';
+import AppLayout from './components/layouts/AppLayout';
+
 import {
   BrowserRouter as Router,
-  Route,
   Switch
 } from "react-router-dom";
+import AppRoute from './components/utils/AppRoute';
+import AuthLayout from './components/layouts/AuthLayout';
 
 function App() {
   return (
     <div className="App">
-      <div className="wrapper-container">
-        <div className="sidebar-container">
-          <Sidebar />
-        </div>
-        <div class="content">
-          <Header />
-          <div class="pages studman-card">
-          <Router>
-            <Switch>
-              <Route path="/" component={Institutions} ></Route> 
-              <Route path="/institutions" component={Institutions} ></Route> 
-            </Switch>
-          </Router>
-          </div>
-         
-
-        </div>
-
-
-      </div>
-
+        <Router>
+          <Switch>
+            <AppRoute exact path="/" component={Institutions}></AppRoute>
+            <AppRoute exact path="/login" component={Login} layout={AuthLayout}></AppRoute>
+            <AppRoute exact path="/institutions" component={Institutions}></AppRoute>
+          </Switch>
+        </Router>
     </div>
   );
 }
