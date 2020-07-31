@@ -1,10 +1,7 @@
 import React from 'react';
 import './App.scss';
-import Header from './components/header/Header';
-import Sidebar from './components/sidebar/Sidebar';
 import Institutions from './components/pages/Institutions';
 import Login from './components/pages/login/Login';
-import AppLayout from './components/layouts/AppLayout';
 
 import {
   BrowserRouter as Router,
