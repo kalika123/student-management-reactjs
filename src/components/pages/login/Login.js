@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
+import {Redirect} from "react-router-dom";
 
 import './Login.scss';
+import AuthService from '../../../services/AuthService';
 
 class Login extends Component {
 
     constructor(){
         super();
         this.state = {
-            email: 'kovacs',
-            password: ''
+            email: 'kovacslevente35@gmail.com',
+            password: 'password'
         }
+        this.authService = AuthService.getInstance();
     }
 
     handleChange = (field, event) => {
@@ -26,11 +29,12 @@ class Login extends Component {
             password: this.state.password
        }
 
-       axios.post(`http://student-man/api/auth/login`, credentials)
+       this.authService.login(credentials)
         .then(res => {
-          console.log(res);
-          console.log(res.data);
-        })
+            if (this.authService.isAuthenticated()){
+                this.props.history.push("/");
+            }
+        });
     }
 
     render() {

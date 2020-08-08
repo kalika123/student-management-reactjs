@@ -16,7 +16,7 @@ function App() {
         <Router>
           <Switch>
             <AppRoute exact path="/" component={Institutions}></AppRoute>
-            <AppRoute exact path="/login" component={Login} layout={AuthLayout}></AppRoute>
+            <AppRoute exact path="/login" component={Login} layout={AuthLayout} protectedRoute={false}></AppRoute>
             <AppRoute exact path="/institutions" component={Institutions}></AppRoute>
           </Switch>
         </Router>
