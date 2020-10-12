@@ -1,13 +1,32 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import AddEditInstModal from './AddEditInstModal'
 
 class Institutions extends Component {
 
+    constructor(props){
+        super(props);
+    }
+
+    state = {
+        show: false
+    }
+
+    onCloseModal = e => {
+        console.log(e);
+        this.setState({show: false})
+    }
+
+    openAddDialog = e => {
+        this.setState({show: true})
+    }
+
     render() {
         return <>
+            <AddEditInstModal show={this.state.show} onClose={this.onCloseModal}></AddEditInstModal>
             <div className="mb-2">
-                <Button variant="primary">Add institution</Button>
+                <Button variant="primary" onClick={this.openAddDialog}>Add institution</Button>
             </div>
             <Table>
                 <thead>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Institutions from './components/pages/Institutions';
+import Institutions from './components/pages/institutions/Institutions';
 import Login from './components/pages/login/Login';
 
 import {
